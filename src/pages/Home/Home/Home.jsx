@@ -1,16 +1,16 @@
-import AboutUs from "../../AboutUs/AboutUs";
-import Colleges from "../../Colleges/Colleges";
-import Gallery from "../../Gallery/Gallery";
-import ResearchPapers from "../../ResearchPapers/ResearchPapers";
-import Testimonials from "../../Testimonials/Testimonials";
+import AboutUs from "../AboutUs/AboutUs";
+import Gallery from "../Gallery/Gallery";
+import ResearchPapers from "../ResearchPapers/ResearchPapers";
+import Testimonials from "../Testimonials/Testimonials";
 import Header from "../Header/Header";
+import PopularColleges from "../PopularColleges/PopularColleges";
 
 const Home = () => {
     return (
         <div className="max-w-screen-xl mx-auto">
             <Header />
             <AboutUs />
-            <Colleges />
+            <PopularColleges />
             <Gallery />
             <ResearchPapers />
             <Testimonials />

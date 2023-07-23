@@ -1,6 +1,7 @@
-import img1 from '../../images/about-us/img1.jpeg'
-import img2 from '../../images/about-us/img2.jpeg'
-import Button from '../Shared/Button/Button';
+import Button from '../../Shared/Button/Button';
+import img1 from '../../../images/about-us/img1.jpeg'
+import img2 from '../../../images/about-us/img2.jpeg'
+
 
 const AboutUs = () => {
     return (

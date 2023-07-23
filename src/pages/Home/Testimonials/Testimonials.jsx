@@ -1,10 +1,10 @@
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { FaQuoteLeft } from 'react-icons/fa';
-import img1 from '../../images/profile-image/p1.png';
-import img2 from '../../images/profile-image/p2.png';
-import img3 from '../../images/profile-image/p3.png';
-import testimonialImg from '../../images/testimonial.jpeg';
+import img1 from '../../../images/profile-image/p1.png';
+import img2 from '../../../images/profile-image/p2.png';
+import img3 from '../../../images/profile-image/p3.png';
+import testimonialImg from '../../../images/testimonial.jpeg';
 
 const Testimonials = () => {
 

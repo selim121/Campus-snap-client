@@ -1,6 +1,6 @@
-import img1 from '../../images/researchPaper/1.png';
-import img2 from '../../images/researchPaper/2.jpeg';
-import img3 from '../../images/researchPaper/3.jpeg';
+import img1 from '../../../images/researchPaper/1.png';
+import img2 from '../../../images/researchPaper/2.jpeg';
+import img3 from '../../../images/researchPaper/3.jpeg';
 import PaperCard from './PaperCard';
 
 const ResearchPapers = () => {

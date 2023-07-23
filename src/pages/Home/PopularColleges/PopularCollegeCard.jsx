@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { GiArchiveResearch } from 'react-icons/gi'
-import Button from "../Shared/Button/Button";
+import Button from "../../Shared/Button/Button";
 
-const CollegeCard = ({college}) => {
+const PopularCollegeCard = ({ popularCollege }) => {
 
     const [isHovered, setIsHovered] = useState(false);
 
@@ -11,7 +11,7 @@ const CollegeCard = ({college}) => {
         setIsHovered(!isHovered);
     };
 
-    const { collegeImage, collegeName, admissionDate, researchHistory, events, sports } = college;
+    const { collegeImage, collegeName, admissionDate, researchHistory, events, sports } = popularCollege;
 
     return (
         <div
@@ -40,4 +40,4 @@ const CollegeCard = ({college}) => {
     );
 };
 
-export default CollegeCard;
+export default PopularCollegeCard;
