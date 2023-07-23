@@ -19,8 +19,8 @@ const Header = () => {
                             <img src={img1} alt="Shoes" className="rounded" />
                         </figure>
                         <div className="px-3 pb-4">
-                            <h2 className="card-title">Our Best Class</h2>
-                            <p className='font-light text-xs'>If you want to grab knogledge what do you choose?</p>
+                            <h2 className="card-title">Our Best College</h2>
+                            <p className='font-light text-sm'>If you want to grab knogledge what do you choose?</p>
                         </div>
                     </div>
                     <img className='h-80 w-60' src={img2} alt="" />
@@ -28,8 +28,8 @@ const Header = () => {
                 <div className="flex flex-row items-center justify-between gap-4 bg-base-100 p-3 mt-5">
                     <img src={p1} alt="" />
                     <div className="">
-                        <h4>Programming Workshop</h4>
-                        <p>Today at 6:00 am</p>
+                        <h4 className='font-bold'>Admission Workshop</h4>
+                        <p className='font-light text-sm'>Today at 6:00 am</p>
                     </div>
                     <Button name={'Join Now'} />
                 </div>
