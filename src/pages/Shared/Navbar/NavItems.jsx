@@ -1,20 +1,31 @@
 import { AiOutlineMenu } from 'react-icons/ai'
-import emptyProfile from '../../../images/empty-profile.jpeg';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css';
+import useAuth from '../../../hooks/useAuth';
 
 const NavItems = () => {
 
+    const { user, logOut } = useAuth();
     const [isOpen, setIsOpen] = useState(false);
+    const [currentUser, setCurrentUser] = useState(null);
 
     const toggleOpen = useCallback(() => {
         setIsOpen(value => !value)
     }, [])
 
     const handleToggle = () => {
+        logOut();
         setIsOpen(false);
     }
+
+    useEffect(() => {
+        fetch(`http://localhost:4000/allUsers/${user?.email}`)
+            .then(res => res.json())
+            .then(data => setCurrentUser(data))
+    }, [user?.email])
+
+    console.log(currentUser);
 
     return (
         <div className='relative me-5'>
@@ -32,22 +43,20 @@ const NavItems = () => {
                     My College
                 </NavLink>
 
-                <div className="flex flex-row items-center gap-3 rounded-full p-4 md:py-1 md:px-2 border-[1px] border-neutral-200">
-                    <input type="text" placeholder="Search" className="rounded-xl ps-3 hidden md:block" />
+                <div className="flex flex-row items-center gap-3 rounded-full p-4 md:py-1 md:px-2 border-[1px] border-neutral-300">
+                    <input type="text" placeholder="Search" className="rounded-xl ps-3 w-36 hidden md:block" />
                     <div
                         onClick={toggleOpen}
                         className='flex flex-row items-center gap-3 cursor-pointer hover:shadow-md transition'
                     >
                         <AiOutlineMenu />
                         <div className=''>
-                            <img
-                                className='rounded-full'
-                                src={emptyProfile}
-                                alt='profile'
-                                height='30'
-                                width='30'
-                            />
+                            <h6 className='text-sm'>
+                                {user && currentUser?.displayName
+                                    ? currentUser.displayName : ''}
+                            </h6>
                         </div>
+
                     </div>
                 </div>
 
@@ -57,6 +66,14 @@ const NavItems = () => {
                     <div className='absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm'>
                         <div className='flex flex-col cursor-pointer'>
                             <input type="text" placeholder="Search" className="rounded-xl ps-3 my-3 mx-2 md:hidden block" />
+
+                            <Link
+                                onClick={() => setIsOpen(false)}
+                                to='/my-profile'
+                                className='block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                            >
+                                My Profile
+                            </Link>
                             <Link
                                 onClick={() => setIsOpen(false)}
                                 to='/'
@@ -87,7 +104,30 @@ const NavItems = () => {
                                 My College
                             </Link>
 
-                            <Link onClick={handleToggle} to={'/sign-in'} className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'>Sign In</Link>
+                            {
+                                user?.email ? <>
+                                    <Link onClick={handleToggle} to={'/sign-in'} className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'>Sign out</Link>
+                                    <Link onClick={() => setIsOpen(false)} to={'/my-profile'} className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'>My Profile</Link>
+                                    
+                                </>
+                                    :
+                                    <>
+                                        <Link
+                                            onClick={() => setIsOpen(false)}
+                                            to='/sign-in'
+                                            className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                                        >
+                                            Sign in
+                                        </Link>
+                                        <Link
+                                            onClick={() => setIsOpen(false)}
+                                            to='/sign-up'
+                                            className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                                        >
+                                            Sign Up
+                                        </Link>
+                                    </>
+                            }
 
                         </div>
                     </div>
