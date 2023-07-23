@@ -1,0 +1,9 @@
+.active-link.active {
+  color: #E80040;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.bg-navbar {
+  background-image: linear-gradient(to right, #FFEEE0, #F1E9F1);
+}
