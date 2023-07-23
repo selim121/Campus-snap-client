@@ -1,5 +1,6 @@
 import AboutUs from "../../AboutUs/AboutUs";
 import Colleges from "../../Colleges/Colleges";
+import Gallery from "../../Gallery/Gallery";
 import Header from "../Header/Header";
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
             <Header />
             <AboutUs />
             <Colleges />
+            <Gallery />
         </div>
     );
 };
