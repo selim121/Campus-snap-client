@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { BiRightArrowAlt } from 'react-icons/bi'
+import { BiRightArrowAlt } from 'react-icons/bi';
 
 const Button = ({name}) => {
     return (
