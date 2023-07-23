@@ -30,8 +30,24 @@ const PopularCollegeCard = ({ popularCollege }) => {
                     <p>{researchHistory}</p>
                 </div>
                 <h2 className="card-title">{collegeName}</h2>
-                <p><span className="font-semibold">Events:</span> {events}</p>
-                <p><span className="font-semibold">Sports:</span> {sports}</p>
+                <div className="flex flex-row items-center justify-around">
+                    <div className="flex flex-col">
+                        <span className="font-semibold text-[#E80040] border-b-2">Events</span>
+                        <div>
+                            {
+                                events?.map(event => <p key={event.name} className="text-sm">{event.name}</p>)
+                            }
+                        </div>
+                    </div>
+                    <div className="flex flex-col">
+                        <span className="font-semibold text-[#E80040] border-b-2">Sports</span>
+                        <div>
+                            {
+                                sports?.map(sport => <p key={sport.name} className="text-sm">{sport.name}</p>)
+                            }
+                        </div>
+                    </div>
+                </div>
                 <div className="flex justify-center">
                     <Button name={'Details'} />
                 </div>

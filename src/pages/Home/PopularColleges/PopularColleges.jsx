@@ -15,7 +15,7 @@ const PopularColleges = () => {
     const [popularColleges, setPopularColleges] = useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:4000/popular-colleges')
+        fetch('http://localhost:4000/colleges/rating/4.5')
         .then(res => res.json())
         .then(data => setPopularColleges(data))
     }, [])
@@ -28,7 +28,7 @@ const PopularColleges = () => {
                 <h3 className="text-3xl font-semibold">Popular Colleges To Learn</h3>
             </div>
             <div className="grid grid-cols-3 gap-4">
-                {popularColleges.map((popularCollege) => (
+            {popularColleges?.map((popularCollege) => (
                     <PopularCollegeCard key={popularCollege._id} popularCollege={popularCollege} />
                 ))}
             </div>

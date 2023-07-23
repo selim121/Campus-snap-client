@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { GiArchiveResearch } from 'react-icons/gi'
-import Button from "../Shared/Button/Button";
+import { BiRightArrowAlt } from 'react-icons/bi';
+import { Link } from "react-router-dom";
 
 const CollegeCard = ({college}) => {
 
@@ -11,7 +12,12 @@ const CollegeCard = ({college}) => {
         setIsHovered(!isHovered);
     };
 
-    const { collegeImage, collegeName, admissionDate, researchHistory, events, sports } = college;
+    const { _id, collegeImage, collegeName, admissionDate, researchHistory, rating, numberOfResearchPapers } = college;
+
+
+    const handleDetails = (college) => {
+        console.log(college.rating);
+    }
 
     return (
         <div
@@ -30,10 +36,10 @@ const CollegeCard = ({college}) => {
                     <p>{researchHistory}</p>
                 </div>
                 <h2 className="card-title">{collegeName}</h2>
-                <p><span className="font-semibold">Events:</span> {events}</p>
-                <p><span className="font-semibold">Sports:</span> {sports}</p>
+                <p><span className="font-semibold">Rating:</span> {rating}</p>
+                <p><span className="font-semibold">Number of Research Papers:</span> {numberOfResearchPapers}</p>
                 <div className="flex justify-center">
-                    <Button name={'Details'} />
+                    <Link to={`/details/${_id}`} onClick={() => handleDetails(college)} className="flex items-center gap-2 bg-[#E80040] text-white px-4 py-3 rounded-md hover:bg-black">Details <BiRightArrowAlt /></Link>
                 </div>
             </div>
         </div>
