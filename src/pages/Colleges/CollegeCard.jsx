@@ -14,11 +14,6 @@ const CollegeCard = ({college}) => {
 
     const { _id, collegeImage, collegeName, admissionDate, researchHistory, rating, numberOfResearchPapers } = college;
 
-
-    const handleDetails = (college) => {
-        console.log(college.rating);
-    }
-
     return (
         <div
             className={`relative h-full bg-white rounded-lg shadow-md hover:border-b-2 hover:border-blue-500 transition duration-500 ${isHovered ? 'transform translate-y-[-10px]' : ''
@@ -39,7 +34,7 @@ const CollegeCard = ({college}) => {
                 <p><span className="font-semibold">Rating:</span> {rating}</p>
                 <p><span className="font-semibold">Number of Research Papers:</span> {numberOfResearchPapers}</p>
                 <div className="flex justify-center">
-                    <Link to={`/details/${_id}`} onClick={() => handleDetails(college)} className="flex items-center gap-2 bg-[#E80040] text-white px-4 py-3 rounded-md hover:bg-black">Details <BiRightArrowAlt /></Link>
+                    <Link to={`/details/${_id}`} className="flex items-center gap-2 bg-[#E80040] text-white px-4 py-3 rounded-md hover:bg-black">Details <BiRightArrowAlt /></Link>
                 </div>
             </div>
         </div>

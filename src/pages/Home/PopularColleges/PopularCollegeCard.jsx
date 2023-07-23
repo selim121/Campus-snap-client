@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { GiArchiveResearch } from 'react-icons/gi'
-import Button from "../../Shared/Button/Button";
+import { BiRightArrowAlt } from 'react-icons/bi';
+import { Link } from "react-router-dom";
 
 const PopularCollegeCard = ({ popularCollege }) => {
 
@@ -11,7 +12,7 @@ const PopularCollegeCard = ({ popularCollege }) => {
         setIsHovered(!isHovered);
     };
 
-    const { collegeImage, collegeName, admissionDate, researchHistory, events, sports } = popularCollege;
+    const { _id, collegeImage, collegeName, admissionDate, researchHistory, events, sports } = popularCollege;
 
     return (
         <div
@@ -49,7 +50,7 @@ const PopularCollegeCard = ({ popularCollege }) => {
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <Button name={'Details'} />
+                    <Link to={`/details/${_id}`} className="flex items-center gap-2 bg-[#E80040] text-white px-4 py-3 rounded-md hover:bg-black">Details <BiRightArrowAlt /></Link>
                 </div>
             </div>
         </div>
