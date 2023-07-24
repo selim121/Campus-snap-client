@@ -37,7 +37,7 @@ const NavItems = () => {
                 <NavLink to="/admission" className="hidden md:block active-link hover:text-[#E80040] px-2.5 py-1.5" onClick={() => setIsOpen(false)}>
                     Admission
                 </NavLink>
-                <NavLink to="/classes" className="hidden md:block active-link hover:text-[#E80040] px-2.5 py-1.5" onClick={() => setIsOpen(false)}>
+                <NavLink to="/my-colleges" className="hidden md:block active-link hover:text-[#E80040] px-2.5 py-1.5" onClick={() => setIsOpen(false)}>
                     My College
                 </NavLink>
 
@@ -81,7 +81,7 @@ const NavItems = () => {
                             </Link>
                             <Link
                                 onClick={() => setIsOpen(false)}
-                                to='/colleges'
+                                to='/my-colleges'
                                 className='block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'
                             >
                                 Colleges

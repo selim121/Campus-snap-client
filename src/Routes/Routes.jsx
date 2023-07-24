@@ -11,6 +11,7 @@ import SignIn from "../pages/SignIn/SignIn";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import Admission from "../pages/Admission/Admission";
 import AdmissionForm from "../pages/Admission/AdmissionForm";
+import MyCollege from "../pages/MyCollege/MyCollege";
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             {
                 path: '/details/:id',
                 element: <CollegeDetails />
+            },
+            {
+                path: '/my-colleges',
+                element: <MyCollege />
             },
             {
                 path: '/sign-in',
