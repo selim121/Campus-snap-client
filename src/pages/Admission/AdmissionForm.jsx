@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from "@tanstack/react-query";
 import useAuth from '../../hooks/useAuth';
 import { useForm } from "react-hook-form";
@@ -7,6 +7,9 @@ const AdmissionForm = () => {
 
     const { user } = useAuth();
     const id = useParams();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const { data: college = [] } = useQuery(['colleges'], async () => {
         const res = await fetch(`http://localhost:4000/colleges/${id.id}`);
@@ -25,14 +28,13 @@ const AdmissionForm = () => {
         formState: { errors },
     } = useForm({
         values: {
-            name: currentUser.name,
+            name: currentUser.displayName,
             email: currentUser.email,
             university: college.collegeName,
             address: currentUser.address,
             photo: currentUser.photoURL
         }
     });
-
     const handleAdmission = data => {
 
         const { name, email, university, address, subject, phone, photo, birthDate } = data;
@@ -50,7 +52,7 @@ const AdmissionForm = () => {
                 if (data.insertedId) {
                     reset();
                     refetch();
-                    console.log(data);
+                    navigate(from, { replace: true });
                 }
             })
     }

@@ -37,7 +37,7 @@ const MyCollege = () => {
             .then(res => res.json())
             .then(college => {
                 const { feedbackMessage, rating } = data;
-                const newData = { name: currentUser.name, photo: currentUser.photoURL, university: college.collegeName, feedbackMessage, rating };
+                const newData = { name: currentUser.displayName, photo: currentUser.photoURL, university: college.collegeName, feedbackMessage, rating };
                 fetch('http://localhost:4000/feedback', {
                     method: 'POST',
                     headers: {

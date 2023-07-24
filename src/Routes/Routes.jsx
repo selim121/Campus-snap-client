@@ -12,6 +12,8 @@ import UserProfile from "../pages/UserProfile/UserProfile";
 import Admission from "../pages/Admission/Admission";
 import AdmissionForm from "../pages/Admission/AdmissionForm";
 import MyCollege from "../pages/MyCollege/MyCollege";
+import PrivateRoute from "./PrivateRoute";
+
 
 const router = createBrowserRouter([
     {
@@ -32,15 +34,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/admission-form/:id',
-                element: <AdmissionForm />
+                element: <PrivateRoute><AdmissionForm /></PrivateRoute>
             },
             {
                 path: '/details/:id',
-                element: <CollegeDetails />
+                element: <PrivateRoute><CollegeDetails /></PrivateRoute>
             },
             {
                 path: '/my-colleges',
-                element: <MyCollege />
+                element: <PrivateRoute><MyCollege /></PrivateRoute>
             },
             {
                 path: '/sign-in',
@@ -52,7 +54,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/my-profile',
-                element: <UserProfile />
+                element: <PrivateRoute><UserProfile /></PrivateRoute>
             }
         ]
     },

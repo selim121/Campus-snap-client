@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { AiOutlineMenu } from 'react-icons/ai'
 import { useCallback, useEffect, useState } from 'react';
@@ -56,9 +57,11 @@ const NavItems = ({ colleges, setFilteredColleges }) => {
                 <NavLink to="/admission" className="hidden md:block active-link hover:text-[#E80040] px-2.5 py-1.5" onClick={() => setIsOpen(false)}>
                     Admission
                 </NavLink>
-                <NavLink to="/my-colleges" className="hidden md:block active-link hover:text-[#E80040] px-2.5 py-1.5" onClick={() => setIsOpen(false)}>
-                    My College
-                </NavLink>
+                {
+                    user?.email && <NavLink to="/my-colleges" className="hidden md:block active-link hover:text-[#E80040] px-2.5 py-1.5" onClick={() => setIsOpen(false)}>
+                        My College
+                    </NavLink>
+                }
 
                 <div className="flex flex-row items-center gap-3 rounded-full p-4 md:py-1 md:px-2 border-[1px] border-neutral-300">
                     <input
@@ -91,18 +94,20 @@ const NavItems = ({ colleges, setFilteredColleges }) => {
                             <input
                                 type="text"
                                 placeholder="Search"
-                                className="rounded-xl ps-3 w-36 hidden md:block"
+                                className="block md:hidden rounded-xl ps-3 w-36"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                             />
 
-                            <Link
-                                onClick={() => setIsOpen(false)}
-                                to='/my-profile'
-                                className='block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'
-                            >
-                                My Profile
-                            </Link>
+                            {
+                                user?.email && <Link
+                                    onClick={() => setIsOpen(false)}
+                                    to='/my-profile'
+                                    className='block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                                >
+                                    My Profile
+                                </Link>
+                            }
                             <Link
                                 onClick={() => setIsOpen(false)}
                                 to='/'
@@ -125,13 +130,15 @@ const NavItems = ({ colleges, setFilteredColleges }) => {
                                 Admission
                             </Link>
 
-                            <Link
-                                onClick={() => setIsOpen(false)}
-                                to='/dashboard/student-home'
-                                className='block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'
-                            >
-                                My College
-                            </Link>
+                            {
+                                user?.email && <Link
+                                    onClick={() => setIsOpen(false)}
+                                    to='/dashboard/student-home'
+                                    className='block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                                >
+                                    My College
+                                </Link>
+                            }
 
                             {
                                 user?.email ? <>
