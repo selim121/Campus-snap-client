@@ -25,8 +25,6 @@ const NavItems = () => {
             .then(data => setCurrentUser(data))
     }, [user?.email])
 
-    console.log(currentUser);
-
     return (
         <div className='relative me-5'>
             <div className='flex flex-row items-center gap-3'>
@@ -106,9 +104,8 @@ const NavItems = () => {
 
                             {
                                 user?.email ? <>
-                                    <Link onClick={handleToggle} to={'/sign-in'} className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'>Sign out</Link>
                                     <Link onClick={() => setIsOpen(false)} to={'/my-profile'} className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'>My Profile</Link>
-                                    
+                                    <Link onClick={handleToggle} to={'/sign-in'} className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'>Sign out</Link>
                                 </>
                                     :
                                     <>

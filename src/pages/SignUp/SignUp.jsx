@@ -33,10 +33,10 @@ const SignUp = () => {
 
     // user sign up
     const onSubmit = (data) => {
-        console.log(data);
-        const {name, email, photo, password, confirmPassword} = data;
-        const newUser = {displayName: name, email, password, confirmPassword, photoURL:photo};
-        console.log(newUser);
+        
+        const {name, email, photo, password, confirmPassword, university, address} = data;
+        const newUser = {displayName: name, email, password, confirmPassword, university, address, photoURL:photo};
+
         fetch('http://localhost:4000/users', {
             method: 'POST',
             headers: {
@@ -102,8 +102,8 @@ const SignUp = () => {
                                     placeholder="Enter your name"
                                     {...register("name", { required: "name is required" })}
                                 />
-                                {errors.email && (
-                                    <p className="text-red-500">{errors.email.message}</p>
+                                {errors.name && (
+                                    <p className="text-red-500">{errors.name.message}</p>
                                 )}
                             </div>
 
@@ -190,6 +190,42 @@ const SignUp = () => {
                                         <p className="text-red-500">{errors.confirmPassword.message}</p>
                                     )}
                                 </div>
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="mb-4">
+                                <label htmlFor="university" className="block mb-1">
+                                    University
+                                </label>
+                                <input
+                                    type="text"
+                                    id="university"
+                                    className={`w-full px-4 py-2 border rounded-lg ${errors.university ? "border-red-500" : ""
+                                        }`}
+                                    placeholder="Enter university name"
+                                    {...register("university", { required: "university name is required" })}
+                                />
+                                {errors.university && (
+                                    <p className="text-red-500">{errors.university.message}</p>
+                                )}
+                            </div>
+
+                            <div className="mb-4">
+                                <label htmlFor="address" className="block mb-1">
+                                    Address
+                                </label>
+                                <input
+                                    type="text"
+                                    id="address"
+                                    className={`w-full px-4 py-2 border rounded-lg ${errors.address ? "border-red-500" : ""
+                                        }`}
+                                    placeholder="Enter your address"
+                                    {...register("address", { required: "Address is required" })}
+                                />
+                                {errors.address && (
+                                    <p className="text-red-500">{errors.address.message}</p>
+                                )}
                             </div>
                         </div>
 
