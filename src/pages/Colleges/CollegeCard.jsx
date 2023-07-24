@@ -16,7 +16,7 @@ const CollegeCard = ({college}) => {
 
     return (
         <div
-            className={`relative h-full bg-white rounded-lg shadow-md hover:border-b-2 hover:border-blue-500 transition duration-500 ${isHovered ? 'transform translate-y-[-10px]' : ''
+            className={`relative h-full bg-gradient-to-r from-[#FFEEE0] to-[#F1E9F1] rounded-lg shadow-md hover:border-b-2 hover:border-blue-500 transition duration-500 ${isHovered ? 'transform translate-y-[-10px]' : ''
                 }`}
             onMouseEnter={handleHover}
             onMouseLeave={handleHover}

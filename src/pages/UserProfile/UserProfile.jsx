@@ -6,15 +6,21 @@ import { useQuery } from "@tanstack/react-query";
 
 const UserProfile = () => {
 
-    const { user } = useAuth();
-    const [showModal, setShowModal] = useState(false);
-    const { register, handleSubmit, reset } = useForm();
-
     const { data: currentUser = [], refetch } = useQuery(['currentUser'], async () => {
         const res = await fetch(`http://localhost:4000/allUsers/${user?.email}`);
         return res.json();
     })
 
+    const { user } = useAuth();
+    const [showModal, setShowModal] = useState(false);
+    const { register, handleSubmit, reset } = useForm({
+        values: {
+            name: currentUser.name,
+            email: currentUser.email,
+            university: currentUser.university,
+            address: currentUser.address
+        }
+    });
 
     const handleIdAndModal = () => {
         setShowModal(true);
@@ -95,7 +101,7 @@ const UserProfile = () => {
                                                             id="name"
                                                             className={`w-full px-4 py-2 border rounded-lg`}
                                                             placeholder="Enter your name"
-                                                            {...register("name", { required: "name is required" })}
+                                                            {...register("name")}
                                                         />
                                                     </div>
 
@@ -108,7 +114,7 @@ const UserProfile = () => {
                                                             id="email"
                                                             className={`w-full px-4 py-2 border rounded-lg`}
                                                             placeholder="Enter your email"
-                                                            {...register("email", { required: "Email is required" })}
+                                                            {...register("email")}
                                                         />
                                                     </div>
                                                 </div>
@@ -123,7 +129,7 @@ const UserProfile = () => {
                                                             id="university"
                                                             className={`w-full px-4 py-2 border rounded-lg`}
                                                             placeholder="Enter university name"
-                                                            {...register("university", { required: "university name is required" })}
+                                                            {...register("university")}
                                                         />
                                                     </div>
 
@@ -136,7 +142,7 @@ const UserProfile = () => {
                                                             id="address"
                                                             className={`w-full px-4 py-2 border rounded-lg`}
                                                             placeholder="Enter your address"
-                                                            {...register("address", { required: "Address is required" })}
+                                                            {...register("address")}
                                                         />
                                                     </div>
 
