@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+
 import CollegeCard from "./CollegeCard";
 import img from '../../images/admission.jpeg';
+import { useQuery } from "@tanstack/react-query";
 
-const Colleges = () => {
+const Colleges = ({ colleges }) => {
 
-    const [colleges, setColleges] = useState([]);
+    const { data: allColleges = [] } = useQuery(['allColleges'], async () => {
+        const res = await fetch(`http://localhost:4000/colleges`);
+        return res.json();
+    })
 
-    useEffect(() => {
-        fetch('http://localhost:4000/colleges')
-            .then(res => res.json())
-            .then(data => setColleges(data))
-    }, [])
+    if(colleges === undefined) {
+        colleges = [...allColleges]
+    }
 
     return (
         <>

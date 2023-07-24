@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useEffect } from 'react';
 import NavItems from './NavItems';
 
 
-const Navbar = () => {
+const Navbar = ({ colleges, setFilteredColleges }) => {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -24,7 +25,7 @@ const Navbar = () => {
         <nav className='fixed top-0 left-0 right-0 z-10'>
             <div className='flex flex-row p-2 items-center justify-between gap-3 md:gap-0'>
                 <p className='uppercase text-xl bg-gradient-to-r from-[#1b1313] via-[#E80040] to-[#1b1313] text-transparent bg-clip-text font-bold tracking-wider'>Campus Snap</p>
-                <NavItems />
+                <NavItems colleges={colleges} setFilteredColleges={setFilteredColleges} />
             </div>
         </nav>
     );

@@ -1,14 +1,16 @@
+/* eslint-disable react/prop-types */
 import { AiOutlineMenu } from 'react-icons/ai'
 import { useCallback, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css';
 import useAuth from '../../../hooks/useAuth';
 
-const NavItems = () => {
+const NavItems = ({ colleges, setFilteredColleges }) => {
 
     const { user, logOut } = useAuth();
     const [isOpen, setIsOpen] = useState(false);
     const [currentUser, setCurrentUser] = useState(null);
+    const [searchQuery, setSearchQuery] = useState("");
 
     const toggleOpen = useCallback(() => {
         setIsOpen(value => !value)
@@ -19,11 +21,28 @@ const NavItems = () => {
         setIsOpen(false);
     }
 
+    const handleSearch = () => {
+        const filteredColleges = colleges.filter((college) =>
+            college.collegeName.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setFilteredColleges(filteredColleges);
+    };
+
+
     useEffect(() => {
         fetch(`http://localhost:4000/allUsers/${user?.email}`)
             .then(res => res.json())
             .then(data => setCurrentUser(data))
     }, [user?.email])
+
+    useEffect(() => {
+        if (searchQuery.trim() === '') {
+            setFilteredColleges([]);
+        } else {
+            handleSearch();
+        }
+    }, [searchQuery]);
+
 
     return (
         <div className='relative me-5'>
@@ -42,7 +61,13 @@ const NavItems = () => {
                 </NavLink>
 
                 <div className="flex flex-row items-center gap-3 rounded-full p-4 md:py-1 md:px-2 border-[1px] border-neutral-300">
-                    <input type="text" placeholder="Search" className="rounded-xl ps-3 w-36 hidden md:block" />
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        className="rounded-xl ps-3 w-36 hidden md:block"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
                     <div
                         onClick={toggleOpen}
                         className='flex flex-row items-center gap-3 cursor-pointer hover:shadow-md transition'
@@ -63,7 +88,13 @@ const NavItems = () => {
                 isOpen && (
                     <div className='absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm'>
                         <div className='flex flex-col cursor-pointer'>
-                            <input type="text" placeholder="Search" className="rounded-xl ps-3 my-3 mx-2 md:hidden block" />
+                            <input
+                                type="text"
+                                placeholder="Search"
+                                className="rounded-xl ps-3 w-36 hidden md:block"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
 
                             <Link
                                 onClick={() => setIsOpen(false)}
