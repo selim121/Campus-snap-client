@@ -7,7 +7,7 @@ import PopularColleges from "../PopularColleges/PopularColleges";
 
 const Home = () => {
     return (
-        <div className="max-w-screen-xl mx-auto">
+        <div id="#home">
             <Header />
             <AboutUs />
             <PopularColleges />

@@ -9,7 +9,7 @@ const Main = () => {
     const [filteredColleges, setFilteredColleges] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:4000/colleges")
+        fetch("https://campus-snap-server.vercel.app/colleges")
             .then((res) => res.json())
             .then((data) => setColleges(data));
     }, []);

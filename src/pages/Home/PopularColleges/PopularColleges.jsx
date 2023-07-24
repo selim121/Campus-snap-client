@@ -7,7 +7,7 @@ const PopularColleges = () => {
     // const { data: colleges = [] } = useQuery({
     //     queryKey: ['colleges'],
     //     queryFn: async () => {
-    //         const res = await fetch('http://localhost:4000/colleges');
+    //         const res = await fetch('https://campus-snap-server.vercel.app/colleges');
     //         return res.data;
     //     }
     // })
@@ -15,7 +15,7 @@ const PopularColleges = () => {
     const [popularColleges, setPopularColleges] = useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:4000/colleges/rating/4.5')
+        fetch('https://campus-snap-server.vercel.app/colleges/rating/4.5')
         .then(res => res.json())
         .then(data => setPopularColleges(data))
     }, [])
@@ -27,7 +27,7 @@ const PopularColleges = () => {
                 <h6 className="uppercase text-[#E80040]">College Categories</h6>
                 <h3 className="text-3xl font-semibold">Popular Colleges To Learn</h3>
             </div>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {popularColleges?.map((popularCollege) => (
                     <PopularCollegeCard key={popularCollege._id} popularCollege={popularCollege} />
                 ))}

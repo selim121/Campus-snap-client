@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 const Admission = () => {
 
     const { data: colleges = [] } = useQuery(['colleges'], async () => {
-        const res = await fetch(`http://localhost:4000/colleges`);
+        const res = await fetch(`https://campus-snap-server.vercel.app/colleges`);
         return res.json();
     })
 

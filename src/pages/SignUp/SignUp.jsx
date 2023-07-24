@@ -37,7 +37,7 @@ const SignUp = () => {
         const {name, email, photo, password, confirmPassword, university, address} = data;
         const newUser = {displayName: name, email, password, confirmPassword, university, address, photoURL:photo};
 
-        fetch('http://localhost:4000/users', {
+        fetch('https://campus-snap-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

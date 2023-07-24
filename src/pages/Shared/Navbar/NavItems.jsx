@@ -31,7 +31,7 @@ const NavItems = ({ colleges, setFilteredColleges }) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:4000/allUsers/${user?.email}`)
+        fetch(`https://campus-snap-server.vercel.app/allUsers/${user?.email}`)
             .then(res => res.json())
             .then(data => setCurrentUser(data))
     }, [user?.email])
@@ -46,7 +46,7 @@ const NavItems = ({ colleges, setFilteredColleges }) => {
 
 
     return (
-        <div className='relative me-5'>
+        <div className='relative '>
             <div className='flex flex-row items-center gap-3'>
                 <NavLink to="/" className="hidden md:block active-link hover:text-[#E80040] px-2.5 py-1.5" onClick={() => setIsOpen(false)}>
                     Home
@@ -63,7 +63,7 @@ const NavItems = ({ colleges, setFilteredColleges }) => {
                     </NavLink>
                 }
 
-                <div className="flex flex-row items-center gap-3 rounded-full p-4 md:py-1 md:px-2 border-[1px] border-neutral-300">
+                <div className="flex flex-row items-center gap-3 md:rounded-full md:p-4 md:py-1 md:px-2 border-[1px] border-neutral-300">
                     <input
                         type="text"
                         placeholder="Search"
@@ -133,7 +133,7 @@ const NavItems = ({ colleges, setFilteredColleges }) => {
                             {
                                 user?.email && <Link
                                     onClick={() => setIsOpen(false)}
-                                    to='/dashboard/student-home'
+                                    to='/my-colleges'
                                     className='block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'
                                 >
                                     My College

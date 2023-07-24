@@ -12,12 +12,12 @@ const AdmissionForm = () => {
     const from = location.state?.from?.pathname || '/';
 
     const { data: college = [] } = useQuery(['colleges'], async () => {
-        const res = await fetch(`http://localhost:4000/colleges/${id.id}`);
+        const res = await fetch(`https://campus-snap-server.vercel.app/colleges/${id.id}`);
         return res.json();
     })
 
     const { data: currentUser = [], refetch } = useQuery(['currentUser'], async () => {
-        const res = await fetch(`http://localhost:4000/allUsers/${user?.email}`);
+        const res = await fetch(`https://campus-snap-server.vercel.app/allUsers/${user?.email}`);
         return res.json();
     })
 
@@ -40,7 +40,7 @@ const AdmissionForm = () => {
         const { name, email, university, address, subject, phone, photo, birthDate } = data;
         const newData = { collegeId: college._id, collegeImage: college.collegeImage, name, userEmail: currentUser.email, email, university, address, subject, photo, phone, birthDate };
 
-        fetch('http://localhost:4000/admission', {
+        fetch('https://campus-snap-server.vercel.app/admission', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

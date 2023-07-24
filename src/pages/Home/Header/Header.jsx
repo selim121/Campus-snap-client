@@ -13,10 +13,10 @@ const Header = () => {
                 <Button name={'Get Started Today'} />
             </div>
             <div className="">
-                <div className="grid grid-cols-2">
+                <div className="grid grid-cols-1 md:grid-cols-2">
                     <div className="bg-base-100 h-80 w-60 rounded">
                         <figure className="p-3">
-                            <img src={img1} alt="Shoes" className="rounded" />
+                            <img src={img1} alt="" className="rounded" />
                         </figure>
                         <div className="px-3 pb-4">
                             <h2 className="card-title">Our Best College</h2>

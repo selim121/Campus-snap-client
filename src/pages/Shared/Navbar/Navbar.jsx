@@ -22,7 +22,7 @@ const Navbar = ({ colleges, setFilteredColleges }) => {
     };
 
     return (
-        <nav className='fixed top-0 left-0 right-0 z-10'>
+        <nav className='fixed top-0 left-0 right-0 z-10 max-w-screen-xl mx-auto'>
             <div className='flex flex-row p-2 items-center justify-between gap-3 md:gap-0'>
                 <p className='uppercase text-xl bg-gradient-to-r from-[#1b1313] via-[#E80040] to-[#1b1313] text-transparent bg-clip-text font-bold tracking-wider'>Campus Snap</p>
                 <NavItems colleges={colleges} setFilteredColleges={setFilteredColleges} />

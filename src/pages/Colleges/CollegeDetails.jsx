@@ -10,7 +10,7 @@ const CollegeDetails = () => {
     const [college, setCollege] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/colleges/${id.id}`)
+        fetch(`https://campus-snap-server.vercel.app/colleges/${id.id}`)
             .then(res => res.json())
             .then(data => setCollege(data))
     }, [id])

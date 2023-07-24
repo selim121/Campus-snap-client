@@ -22,21 +22,21 @@ const Footer = () => {
                             <p>selimhossain.sh1@gmail.com</p>
                         </div>
                         <div className="flex flex-col border-l ps-4 space-y-2 uppercase">
-                            <Link href={'#about'}>About</Link>
-                            <Link href={'#blogs'}>Blogs</Link>
-                            <Link href={'#contact'}>contact</Link>
+                            <Link href={'#home'}>Home</Link>
+                            <Link to={'/colleges'}>Colleges</Link>
+                            <Link to={'/admission'}>Admission</Link>
                             <Link href={'#gallery'}>Gallery</Link>
-                            <Link href={'#admission'}>Admission</Link>
+                            <Link href={'#testimonial'}>Testimonial</Link>
                         </div>
                         <div className="uppercase border-l ps-4 space-y-2">
                             <p>Follow us</p>
                             <div className="grid grid-cols-2">
-                                <AiFillFacebook size={35} />
-                                <AiFillLinkedin size={35} />
-                                <AiFillGithub size={35} />
-                                <AiFillTwitterSquare size={35} />
+                                <Link target='_blank' to={'https://www.facebook.com/selimhossain.sh1/'} ><AiFillFacebook size={35} /></Link>
+                                <Link target='_blank' to={'https://www.linkedin.com/in/selimhossain-sh1/'} ><AiFillLinkedin size={35} /></Link>
+                                <Link target='_blank' to={'https://github.com/selim121'} ><AiFillGithub size={35} /></Link>
+                                <Link target='_blank' to={'https://twitter.com/selim_hossain1'} ><AiFillTwitterSquare size={35} /></Link>
                             </div>
-                            <div className="join text-black">
+                            <div className="join text-black hidden md:block">
                                 <input className="input input-bordered join-item" placeholder="Email" />
                                 <button className="btn bg-[#E80040] join-item rounded-r-full text-white">Subscribe</button>
                             </div>

@@ -13,12 +13,14 @@ import AuthProvider from './providers/AuthProvider';
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <AuthProvider>
-    <QueryClientProvider client={queryClient}>
-      <React.StrictMode>
-        <RouterProvider router={router} />
-      </React.StrictMode>
-    </QueryClientProvider>
-  </AuthProvider>
+  <div className="max-w-screen-xl mx-auto">
+    <React.StrictMode>
+      <AuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </AuthProvider>
+    </React.StrictMode >
+  </div>
   ,
 )

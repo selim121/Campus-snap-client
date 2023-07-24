@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 const UserProfile = () => {
 
     const { data: currentUser = [], refetch } = useQuery(['currentUser'], async () => {
-        const res = await fetch(`http://localhost:4000/allUsers/${user?.email}`);
+        const res = await fetch(`https://campus-snap-server.vercel.app/allUsers/${user?.email}`);
         return res.json();
     })
 
@@ -27,7 +27,7 @@ const UserProfile = () => {
     }
 
     const handleUpdate = data => {
-        fetch(`http://localhost:4000/my-profile/update/${user?.email}`, {
+        fetch(`https://campus-snap-server.vercel.app/my-profile/update/${user?.email}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(data)
@@ -48,7 +48,7 @@ const UserProfile = () => {
             <h1 className="uppercase text-4xl font-bold opacity-50 text-center">Student profile</h1>
             <div className="flex flex-col md:flex-row gap-8 items-center justify-center mt-8 bg-[#e800422d] w-full md:w-3/4 md:mx-auto py-8">
                 <img className="rounded" src={currentUser?.photoURL} alt="profile image" />
-                <div className="space-y-3">
+                <div className="space-y-3 px-3 md:px-0">
                     <div>
                         <p className="uppercase font-semibold text-sm opacity-70">Name</p>
                         <h1 className="uppercase text-2xl font-semibold">{currentUser?.displayName}</h1>

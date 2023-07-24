@@ -43,7 +43,7 @@ const Testimonials = () => {
     )
 
     const { data: feedbacks = [] } = useQuery(['feedbacks'], async () => {
-        const res = await fetch('http://localhost:4000/feedback');
+        const res = await fetch('https://campus-snap-server.vercel.app/feedback');
         return res.json();
     })
 
